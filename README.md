@@ -1,10 +1,11 @@
 Car rent service
 ================
 
-	Database consists of 3 tables:
+	Database consists of 4 tables:
 1. cars
 2. customers
 3. orders
+4. repairs
 
 
 Table "cars":
@@ -47,3 +48,18 @@ end_day | date |  YES |  - |  -
 car_id | integer |  NO |  foreign key ( car_id(FK) -> cars.id(PK) ) |  - 
 customer_id | integer | NO | foreign key ( customer_id(FK) -> customers.id(PK) ) |  - 
 
+
+
+Table "repairs":
+--------------
+
+Column | Type | Nullable | Type of key | Constraints 
+--- | --- | --- | --- | ---
+id | integer |  NO |  primary key |  unique 
+start_day | date |  NO |  - |  - 
+end_day | date |  YES |  - |  - 
+car_id | integer |  NO |  foreign key ( car_id(FK) -> cars.id(PK) ) |  - 
+customer_id | integer | NO | foreign key ( customer_id(FK) -> customers.id(PK) ) |  - 
+repair_id_external | integer | YES | - | -
+price | integer | YES | - | -
+status_of_repair | character varying | NO | - | -
