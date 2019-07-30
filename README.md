@@ -6,6 +6,7 @@ Car rent service
 2. customers
 3. orders
 4. repairs
+5. roles
 
 
 Table "cars":
@@ -28,12 +29,16 @@ Table "customers":
 Column | Type | Nullable | Type of key | Constraints 
 --- | --- | --- | --- | ---
 id | integer |  NO |  primary key |  unique 
+username | character varying |  NO |  - |  unique 
+password | character varying |  NO |  - |  - 
 first_name | character varying |  NO |  composite key |  unique 
 last_name | character varying |  NO |  composite key |  unique 
 area_of_living | character varying |  NO |  - |  - 
+role_id | integer |  NO | foreign key ( role_id(FK) -> roles.id(PK) )|  - 
 discount | integer |  YES |  - |  - 
 passport_number | integer |  NO |  - |  unique 
 phone_number | integer |  YES |  - |  - 
+enabled | boolean |  NO |  - |  - 
 
 
 
@@ -45,6 +50,7 @@ Column | Type | Nullable | Type of key | Constraints
 id | integer |  NO |  primary key |  unique 
 car_id | integer |  NO |  foreign key ( car_id(FK) -> cars.id(PK) ) |  - 
 customer_id | integer | YES| foreign key ( customer_id(FK) -> customers.id(PK) ) |  - 
+order_price | integer | YES| - |  - 
 start_day | date |  NO |  - |  - 
 end_day | date |  YES |  - |  - 
 
@@ -63,3 +69,13 @@ end_day | date |  YES |  - |  -
 repair_id_external | integer | YES | - | -
 price | integer | YES | - | -
 status_of_repair | character varying | NO | - | -
+
+
+
+Table "roles":
+--------------
+
+Column | Type | Nullable | Type of key | Constraints 
+--- | --- | --- | --- | ---
+id | integer |  NO |  primary key |  unique 
+role | character varying | NO | - |  unique
